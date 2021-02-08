@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "660793881697",
+    "project_id": "wooshme-506ee",
+    "storage_bucket": "wooshme-506ee.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:660793881697:android:18e8c029bef63b45cce620",
+        "android_client_info": {
+          "package_name": "com.example.WooshMe"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "660793881697-i7iin80aqho98b7brcrbpbf9a2rt9jk4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDXdddDfBcMjzQE-sf2aDSwr4jGHuRdSYc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "660793881697-i7iin80aqho98b7brcrbpbf9a2rt9jk4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
