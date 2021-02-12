@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:WooshMe/widgets/pickers/user_image_picker.dart';
 import 'package:flutter/material.dart';
 
 class AuthForm extends StatefulWidget {
@@ -6,6 +9,7 @@ class AuthForm extends StatefulWidget {
     String email,
     String username,
     String password,
+    File image,
     bool isLogin,
     BuildContext ctx,
   ) submitFn;
@@ -21,10 +25,22 @@ class _AuthFormState extends State<AuthForm> {
   var _userEmail = '';
   var _userName = '';
   var _userPassword = '';
+  File _userImageFile;
+
+  void _pickedImage(File image) {
+    _userImageFile = image;
+  }
 
   void _trySubmit() {
     final _isValid = _formKey.currentState.validate();
-    FocusScope.of(context).unfocus(); //close the keyboard
+    FocusScope.of(context).unfocus();
+    if (_userImageFile == null && !_isLogin) {
+      Scaffold.of(context).showSnackBar(SnackBar(
+        content: Text('Please pick and image'),
+        backgroundColor: Theme.of(context).errorColor,
+      ));
+      return;
+    } //close the keyboard
     if (_isValid) {
       _formKey.currentState.save();
       widget.submitFn(
@@ -32,6 +48,7 @@ class _AuthFormState extends State<AuthForm> {
         _userEmail.trim(),
         _userName.trim(),
         _userPassword.trim(),
+        _userImageFile,
         _isLogin,
         context,
       );
@@ -53,6 +70,7 @@ class _AuthFormState extends State<AuthForm> {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
+                  if (!_isLogin) UserImagePicker(_pickedImage),
                   TextFormField(
                     key: ValueKey('email'),
                     validator: (value) {
